@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+src/audiobook/__init__.py
+src/audiobook/builder.py
+src/audiobook/chunker.py
+src/audiobook/cli.py
+src/audiobook/voices.py
+src/audiobook_maker.egg-info/PKG-INFO
+src/audiobook_maker.egg-info/SOURCES.txt
+src/audiobook_maker.egg-info/dependency_links.txt
+src/audiobook_maker.egg-info/entry_points.txt
+src/audiobook_maker.egg-info/requires.txt
+src/audiobook_maker.egg-info/top_level.txt

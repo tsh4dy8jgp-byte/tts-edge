@@ -1,0 +1,743 @@
+AI 103 Audio Companion. Developing AI Apps and Agents on Azure.
+
+Welcome to your audio companion for Microsoft exam AI 103, Developing AI Apps and Agents on Azure. This recording runs somewhere between seventy and ninety minutes depending on your playback speed. It is built for passive listening. You do not need a screen. You do not need to take notes. You can listen while walking, while commuting, while doing dishes, and the structure will still work.
+
+Here is how this recording is organised, so you know what is coming.
+
+First, exam mechanics and mindset. Second, what changed from AI 102, which matters more than you might expect. Then five sections, one per exam domain, weighted roughly the way the exam is weighted. Then a section on mental models for ambiguous questions. Then a rapid fire quiz with pause cues. Then exam day strategy. Then a closing recap.
+
+Throughout this recording I will repeat key concepts deliberately. If you hear something twice, that is not an editing mistake. Repetition is the point. Spaced repetition inside a single listening session is one of the cheapest ways to move knowledge from recognition into recall, and recall is what the exam tests.
+
+One more thing before we begin. This audio is a companion, not a substitute. AI 103 assumes hands on experience building with Python and with Foundry. You cannot listen your way to a pass. What this recording does is give you the map, the vocabulary, and the decision rules, so that when you sit down to do the hands on work, you already know what you are looking at and why it matters. Use it to prime, and use it to review. Do not use it as your only source.
+
+Let us begin.
+
+Section one. Exam mechanics and mindset.
+
+AI 103 earns you the Microsoft Certified Azure AI Apps and Agents Developer Associate credential. It is the direct replacement for AI 102, which retired on the thirtieth of June, 2026.
+
+The mechanics. The passing score is 700 out of 1000. That is a scaled score, not a percentage, so do not try to reverse engineer how many questions you need right. Microsoft weights questions by difficulty and by item performance. What matters practically is that you should be comfortably above eighty percent on quality practice material before you book, because scaled scoring is unforgiving in ways raw percentages are not.
+
+Expect roughly forty to sixty questions in one hundred twenty minutes. The exam is available in multiple languages, and if you are not testing in your first language you can request an additional thirty minutes. That is worth knowing. It is a free extension and there is no downside to requesting it.
+
+Question types. You will see standard multiple choice. You will see multiple select, where the question tells you how many to pick. You will see drag and drop ordering. You will see case studies, which are longer scenarios with several questions attached, and here is the thing to know about case studies. Once you leave a case study section in a Microsoft exam, you generally cannot return to it. Treat that section as a closed unit. Finish it before you move on.
+
+Now the mindset, and this is the part that separates people who pass from people who nearly pass.
+
+AI 103 is a design and decision exam wearing developer clothing. Yes, you need Python. Yes, you will see code. But the majority of the difficulty is not syntax recall. It is service selection under constraints. The typical question gives you a scenario with two or three constraints buried in it, and four options that would all technically work. Your job is to find the option that satisfies every constraint, not the option that is generally best practice.
+
+Let me say that again because it is the single most useful sentence in this recording. Your job is to find the option that satisfies every constraint, not the option that is generally best practice.
+
+Constraints in Microsoft scenarios usually come in a small number of flavours. Cost. Latency. Data residency and sovereignty. Security posture, especially no keys in code. Minimal administrative effort. Minimal code changes. Compliance and auditability. Throughput and scale.
+
+Train yourself to read a scenario and mentally tag the constraints before you look at the answers. If the scenario says the solution must minimise administrative effort, that phrase is not decoration. It is the discriminator. It is telling you to pick the managed option over the do it yourself option, even if the do it yourself option gives more control.
+
+Similarly, if a scenario says credentials must not be stored in application code, that is telling you managed identity. Every time. If a scenario mentions data must not leave a geographic boundary, that is telling you to look at deployment type and region. If a scenario says the team has limited machine learning expertise, that is telling you to pick built in and prebuilt over custom and trained.
+
+Learn the vocabulary of constraints and half the exam becomes pattern recognition.
+
+Section two. What changed from AI 102, and why it matters.
+
+This section exists because the single most expensive mistake candidates make on AI 103 is studying AI 102 material. There is a great deal of AI 102 content still circulating, it is well produced, it is cheap or free, and a meaningful portion of it will actively mislead you.
+
+Here is what actually changed.
+
+Change number one. The platform centre of gravity moved to Foundry. The audience profile now says explicitly that you are an engineer who builds, manages, and deploys agents and AI solutions that take advantage of Microsoft Foundry. Foundry is the umbrella. Inside it you have Foundry projects, model deployments, agents, evaluation tooling, and what the exam calls Foundry Tools, which is the current naming for the family of capabilities you may have previously known as Azure AI Services or, further back, Cognitive Services.
+
+If your study material talks about standalone Cognitive Services resources as the primary framing, it is out of date. The exam frames these as Foundry Tools consumed through a Foundry project.
+
+Change number two, and this is the big one. Agents are now a first class exam subject, not a footnote. The second domain is called Implement generative AI and agentic solutions and it is the heaviest domain on the exam at thirty to thirty five percent. Within it you have an entire skill group devoted to building agents in Foundry. Agent roles, goals, conversation tracking, tool schemas, function calling, conversation memory, orchestrated multi agent solutions, autonomous and semi autonomous workflows with approval controls, and agent monitoring and error analysis.
+
+AI 102 had essentially none of this. If you are coming from GitHub certification GH 600, the Agentic AI Developer exam, this is your home turf and you should feel good about it. The vocabulary is different, the platform is different, but the mental models are the same. Tool schemas. Guardrails. Approval gates. Context management. Evaluation and error analysis. You already know how to think about these.
+
+Change number three. Computer vision shifted from classification and detection towards generation and multimodal understanding. AI 102 was heavy on Custom Vision, training classifiers, object detection projects. AI 103 is about generating images from text prompts and reference media, generating video, inpainting and mask based editing, captioning, visual question answering, alt text generation for accessibility, and Content Understanding.
+
+That is a genuine reorientation. If you spend three weeks learning to train a Custom Vision object detector you will have spent three weeks poorly.
+
+Change number four. Document Intelligence has largely been absorbed into a broader information extraction domain built around Content Understanding, retrieval pipelines, and grounding. The exam now talks about ingesting and indexing documents, images, audio and video, configuring semantic, hybrid and vector search for grounding, and producing clean grounded representations for agents and retrieval augmented generation.
+
+The framing has moved from extract fields from a form to build a grounding pipeline that feeds an agent. That is a different mental model and you should adopt it.
+
+Change number five. Responsible AI is no longer a single tidy domain you can revise the night before. It is threaded through everything. There is a responsible AI skill group inside the planning domain. There is a responsible AI for multimodal content skill group inside the vision domain. Safety, evaluators, guardrails, auditing and governance show up everywhere.
+
+Treat responsible AI as a cross cutting concern, because that is how the exam treats it.
+
+Change number six. Python is stated explicitly in the audience profile. Not C sharp, not JavaScript. Python. You should be able to read Python that constructs a client, authenticates it, calls a model or a tool, and handles the response, and you should be able to spot what is wrong with it.
+
+So, to summarise this section, because it is worth locking in. Foundry is the platform. Agents are the heaviest subject. Vision moved to generation and multimodal understanding. Document processing became grounding pipelines. Responsible AI is everywhere. Python is the language.
+
+Now let us go domain by domain.
+
+Section three. Domain one. Plan and manage an Azure AI solution. Twenty five to thirty percent.
+
+This is the second heaviest domain and it is the one that rewards clear thinking more than memorisation. It breaks into four skill groups. Choosing services. Setting up solutions in Foundry. Managing, monitoring and securing. And implementing responsible AI.
+
+Let us take model selection first, because it opens the domain and it shows up constantly in scenario questions.
+
+You need to be able to choose an appropriate model for a task across large language models, small language models, multimodal models, and Foundry Tools. The decision framework is simpler than it looks.
+
+Ask, first, what modality does the input and output require. If the input includes images, audio, or video and the reasoning must span modalities, you need a multimodal model. If it is text in and text out, a language model will do.
+
+Ask, second, what is the reasoning depth. Complex multistep reasoning, nuanced judgement, long context synthesis, that is large model territory. Classification, extraction against a fixed schema, routing, short summarisation, that is small model territory and often a very good answer on a cost constrained question.
+
+Ask, third, is there a Foundry Tool that already does this. This is the question candidates forget, and Microsoft exams love it. If the task is translate this text, there is a translation capability. If the task is transcribe this audio, there is a speech capability. If the task is extract structured fields and layout from a document, there is Content Understanding. Reaching for a general purpose large language model when a purpose built tool exists is usually the wrong answer, because the purpose built tool is cheaper, more predictable, and often more accurate on its narrow job.
+
+Ask, fourth, what are the non functional constraints. Cost per call. Latency budget. Throughput. Region availability. Whether the model needs to be deployed in a specific data boundary.
+
+That is your model selection framework. Modality, reasoning depth, is there a purpose built tool, non functional constraints.
+
+Now, deployment options, which is a reliable source of exam questions.
+
+The core distinction to internalise is between consumption style deployments where you pay per token and share capacity, and provisioned deployments where you reserve throughput capacity and pay for it whether you use it or not.
+
+Consumption style, often called standard, is the right answer when traffic is variable or unpredictable, when you are prototyping, when cost efficiency at low volume matters, and when occasional variability in latency is acceptable.
+
+Provisioned throughput is the right answer when you need predictable latency, when you have steady high volume, when you need guaranteed capacity that is not subject to noisy neighbours, and when the scenario mentions consistent performance under load or a latency service level requirement.
+
+There is also a geographic dimension. Deployments can be scoped globally, which gives the best availability and often the best price, or scoped to a data zone or a specific region, which constrains where processing happens. If a scenario mentions data residency, sovereignty, regulatory boundaries, or a requirement that data stays within a particular geography, you are being pushed towards the more geographically constrained deployment option, and you should accept the availability and cost trade off that comes with it.
+
+And there is batch processing. If a scenario describes a large volume of requests that are not time sensitive, an offline job, an overnight enrichment run, a bulk classification of an archive, then batch is the cost optimal answer. Batch trades latency for a significant discount. The tell in the question is always the same. The workload is not interactive.
+
+Let me repeat the deployment heuristic. Variable traffic, prototyping, cost sensitivity, use standard consumption. Steady high volume, predictable latency required, use provisioned. Data must stay in a boundary, constrain the deployment geography. Large volume, not time sensitive, use batch.
+
+Next, retrieval and indexing choices, which sit in this domain even though the implementation detail sits in domain five.
+
+You should be able to choose an appropriate method for retrieval and indexing. The options in play are keyword search, vector search, hybrid search, and semantic ranking layered on top.
+
+Keyword search matches literal terms. It is excellent for exact identifiers, product codes, names, error codes, anything where the precise string matters. It fails when the user phrases the question differently from the document.
+
+Vector search matches on meaning by comparing embeddings. It handles paraphrase, synonyms, and conceptual similarity. It fails on exact identifiers, because a product code has no meaningful semantic neighbourhood.
+
+Hybrid search runs both and fuses the results. In practice this is the default recommendation for retrieval augmented generation over mixed content, because real user questions contain both conceptual language and specific identifiers.
+
+Semantic ranking is a reranking layer applied after retrieval. It takes the top results and reorders them using a language understanding model to better match the intent of the query. It improves precision at the top of the result list, which is exactly what matters when you are feeding a limited number of chunks into a model context.
+
+The exam heuristic. Mixed natural language queries over enterprise content, hybrid search plus semantic ranking. Exact code lookup, keyword. Pure conceptual similarity, vector. And if the question emphasises that the top result quality matters or that irrelevant chunks are polluting the answer, semantic ranking is the lever.
+
+Now, memory, tool, and knowledge integration for agents, which is the fourth bullet in this skill group and a genuinely new subject.
+
+An agent needs three kinds of access to information and you should be able to distinguish them cleanly.
+
+Knowledge, which is the grounding corpus. Documents, indexes, search results. Retrieved at query time, read only, large, and shared across users.
+
+Tools, which are capabilities the agent can invoke to take action or fetch live data. An API call, a function, a database query, a search. Tools have schemas that describe their parameters, and the quality of those schemas is what determines whether the model calls them correctly.
+
+Memory, which is state that persists across turns or across sessions for a particular user or conversation. Short term memory is the conversation thread. Long term memory is durable state that survives beyond a session.
+
+Candidates confuse knowledge and memory constantly. Here is the clean line. Knowledge is what the organisation knows. Memory is what this conversation or this user has established. If the scenario says the agent must recall a user's stated preference from a previous session, that is memory. If the scenario says the agent must answer from the company handbook, that is knowledge.
+
+Next skill group. Setting up AI solutions in Foundry.
+
+You need to design infrastructure for AI apps and agents, choose deployment options, configure model and agent deployments, and integrate Foundry projects with continuous integration and continuous deployment pipelines.
+
+The architectural concept to hold is the Foundry project as the unit of organisation. A project groups your model deployments, your connected resources, your agents, your evaluation runs, and your access control. Applications connect to a project rather than to a scattered set of individual resources. When a question asks how an application should be configured to reach these capabilities, the answer is generally connect to the project, not wire up individual endpoints one at a time.
+
+For continuous integration and continuous deployment, the exam cares that you understand promotion across environments. Development, test, production. Configuration should be externalised, not hard coded. Model deployment names and versions should be parameterised so that promoting a change does not require editing code. Evaluation should run as a gate in the pipeline, so that a change to a prompt or a model version is tested before it reaches production, in the same way you would gate on unit tests.
+
+That last point is worth emphasising because it is a favourite scenario. A team changes a prompt and quality degrades in production. What should they have done. The answer is an automated evaluation step in the deployment pipeline with a quality threshold that blocks promotion. Prompts are code. Treat them like code.
+
+Next skill group. Manage, monitor and secure AI systems. This is dense and very testable.
+
+Quotas and rate limits first. Capacity for model deployments is allocated in tokens per minute, and request limits are derived from that allocation. When an application exceeds the limit it receives a throttling response, specifically a 429 status.
+
+The correct application behaviour when throttled is retry with exponential backoff, honouring any retry after header the service provides. That is the answer to a large family of questions. If the scenario describes intermittent failures under load, and the options include increasing quota, adding retry logic, switching deployment type, and rewriting the application, read carefully. If the failures are bursty and the average load is within capacity, the answer is retry with backoff. If the average load genuinely exceeds capacity, the answer is more quota or a provisioned deployment.
+
+Cost management. Understand that cost is driven by tokens for generative workloads, by transactions or characters or hours for tool style services, and by reserved capacity for provisioned deployments. The levers for reducing cost, in rough order of impact, are choosing a smaller model where the task allows, reducing context sent per call, caching, batching non interactive work, and right sizing provisioned capacity.
+
+Monitoring. You need to monitor model performance, drift, safety events, and grounding quality. Also data ingestion quality, search index health, and relevance performance.
+
+Distinguish these clearly, because questions will ask which signal indicates which problem.
+
+If answer quality has degraded but retrieval is returning the right documents, the problem is generation. Look at prompt, model version, parameters.
+
+If answers are wrong because the model is working from irrelevant source material, the problem is retrieval. Look at index health, chunking, embedding freshness, relevance metrics.
+
+If answers are confidently wrong and not supported by any retrieved source, that is a grounding failure, and the instrument for detecting it is a groundedness evaluator.
+
+If the volume of blocked or flagged requests has risen, that is a safety signal and you look at content filtering telemetry.
+
+If model behaviour has changed over time without a deployment change, that is drift, and you detect it by running a fixed evaluation set on a schedule and watching the scores.
+
+Say that back to yourself. Generation problem, retrieval problem, grounding failure, safety signal, drift. Five distinct diagnoses, five distinct instruments.
+
+Security. This is where questions are most predictable and most winnable.
+
+Managed identity is the answer whenever a scenario says credentials must not be stored in code or configuration, or mentions keyless authentication, or mentions eliminating secret rotation burden. Assign a managed identity to the compute resource, grant it a role on the target resource, and authenticate without any key ever existing in your application.
+
+Prefer role based access control over keys generally. Keys are coarse. They grant whatever the key grants, they must be rotated, and they leak. Roles are granular, auditable, and revocable.
+
+Private networking. When a scenario says traffic must not traverse the public internet, you are being asked for a private endpoint, with public network access disabled on the resource. The pairing matters. A private endpoint alone does not close the public door. You must also disable public access, otherwise the resource remains reachable.
+
+Customer managed keys appear when a scenario demands control over encryption keys for compliance. Data is encrypted at rest by default with platform managed keys. Customer managed keys are the escalation when the organisation must hold the key itself.
+
+Let me consolidate the security heuristics. No secrets in code, managed identity. Granular and auditable access, role based access control. No public internet, private endpoint plus disable public network access. Organisation must control encryption keys, customer managed keys.
+
+Final skill group in this domain. Implement responsible AI across generative and agentic systems.
+
+Content safety operates on categories, and you should know them. Hate and fairness. Sexual. Violence. Self harm. Each is evaluated at severity levels, and you configure a threshold per category, per deployment, independently for input prompts and output completions.
+
+That last detail matters. Filters apply to both what goes in and what comes out, and you can configure them separately. A scenario about a medical or clinical application might legitimately need a more permissive threshold on one category for inputs, because clinicians describe injuries, while keeping outputs tightly filtered.
+
+Beyond the four core categories, you should know the specialised protections.
+
+Prompt shields defend against jailbreak attempts in direct user input and against indirect prompt injection, which is malicious instruction text embedded in content the model retrieves or is given, such as a document, a web page, or an image. Indirect prompt injection is called out explicitly in the exam objectives, including the image based variant, so know it.
+
+Groundedness detection flags generated content that is not supported by the provided source material. This is your fabrication detector for retrieval augmented systems.
+
+Protected material detection flags output that reproduces known copyrighted text or code.
+
+Now, governance of agent behaviour. The objectives mention oversight modes, constraints, and tool access controls, plus auditing through trace logging, provenance metadata, and approval workflows.
+
+The mental model here should be familiar if you have done agentic work. Autonomy exists on a spectrum, and you place a workflow on that spectrum according to the blast radius of its actions.
+
+Read only actions, low blast radius, can run autonomously. Actions that write, spend money, send communications externally, or are irreversible require a human approval gate before execution. That is the principle. When a scenario describes an agent that can issue refunds, send customer emails, delete records, or modify production configuration, the correct design includes an approval step, and the correct answer will be the one that includes it.
+
+Tool access control is the other lever. An agent should have access only to the tools its role requires. Do not hand a general purpose agent every tool in the catalogue. Scope tools to roles.
+
+And auditing. Trace logging captures what the agent did, in what order, with what inputs and outputs, including which tools it invoked. Provenance metadata captures where grounding content came from, so a claim can be traced back to a source document. Together these are what make an agent defensible after the fact, and questions about compliance, investigation, or explaining a decision to a regulator are pointing at these.
+
+That completes domain one. Let me give you the compressed version before we move on.
+
+Model selection is modality, then reasoning depth, then is there a purpose built tool, then constraints. Deployment is standard for variable traffic, provisioned for predictable latency at steady volume, geographically constrained for residency, batch for non interactive volume. Retrieval defaults to hybrid plus semantic ranking. Agents need knowledge, tools, and memory, and those are three different things. Throttling means retry with exponential backoff. No secrets in code means managed identity. No public internet means private endpoint plus disabled public access. Content safety has four categories with configurable severity on both input and output, plus prompt shields, groundedness detection, and protected material detection. High blast radius actions require human approval.
+
+Section four. Domain two. Implement generative AI and agentic solutions. Thirty to thirty five percent.
+
+This is the heaviest domain on the exam. It deserves proportionally the most of your study time and the most of your hands on effort. It has three skill groups. Building generative applications with Foundry. Building agents with Foundry. And optimising and operationalising generative systems.
+
+Let us start with retrieval augmented generation, because it underpins most of what follows.
+
+Retrieval augmented generation, usually shortened to RAG, is the pattern where you retrieve relevant content at query time and place it into the model context so that the model answers from that content rather than from its training data. It exists to solve three problems. Training data is stale. Training data does not contain your private corpus. And an ungrounded model will fabricate confidently.
+
+The pipeline has stages and you should be able to name them in order, because ordering questions are common.
+
+Stage one, ingestion. Get the source content into a place the pipeline can read.
+
+Stage two, cracking and extraction. Pull text out of whatever format it arrived in. Optical character recognition for scanned documents and images. Layout analysis for structured documents. Transcription for audio.
+
+Stage three, chunking. Split the extracted text into pieces small enough to embed and to fit in context alongside other chunks.
+
+Stage four, embedding. Convert each chunk into a vector using an embedding model.
+
+Stage five, indexing. Store the chunks, their vectors, and their metadata in a search index.
+
+Stage six, retrieval. At query time, embed the user query, search the index, optionally rerank.
+
+Stage seven, augmentation. Assemble a prompt containing the retrieved chunks, the user question, and instructions.
+
+Stage eight, generation. Call the model and return the grounded answer, ideally with citations.
+
+Eight stages. Ingest, extract, chunk, embed, index, retrieve, augment, generate. Say that once more to yourself. Ingest, extract, chunk, embed, index, retrieve, augment, generate.
+
+Now, chunking deserves special attention because it is the most common source of quality problems and the exam knows it.
+
+Chunks that are too large waste context, dilute relevance, and push up cost. Chunks that are too small fragment meaning, so a chunk arrives without the context needed to interpret it. The usual mitigation is overlap, where consecutive chunks share some text at the boundary, so a sentence split across a boundary still appears intact in at least one chunk.
+
+Better than fixed size chunking is structure aware chunking, where you split on document structure. Headings, sections, paragraphs, table boundaries. This keeps semantically coherent units together.
+
+A useful refinement is to prepend contextual metadata to each chunk. Document title, section heading, date, source. This helps both retrieval, because the metadata is embedded along with the content, and generation, because the model can cite accurately.
+
+Here is the diagnostic pattern. If retrieval returns chunks that are on topic but the answer is still incomplete, chunks are probably too small or lack context. If retrieval returns chunks that are vaguely relevant but never precisely on point, chunks are probably too large. If answers cite the wrong section of a long document, you need structure aware chunking and better metadata.
+
+Now, embedding freshness, which is a subtle trap. If you change your embedding model, every existing vector in your index was produced by the old model and is no longer comparable to new query vectors. You must re embed the entire corpus. There is no partial migration. If a scenario describes retrieval quality collapsing after a model change, this is the cause.
+
+Moving to evaluation, which the objectives call out explicitly. Evaluate models and apps, including detecting fabrications, relevance, quality, and safety.
+
+You should know the main evaluator families and, more importantly, what each one is for.
+
+Groundedness measures whether the generated answer is supported by the retrieved context. Low groundedness means fabrication. This is your hallucination detector.
+
+Relevance measures whether the answer actually addresses the question asked. An answer can be perfectly grounded in the source and still not answer the question.
+
+Retrieval quality, sometimes measured as retrieval score or context precision and recall, measures whether the right documents were fetched in the first place. This is the upstream check.
+
+Coherence and fluency measure the linguistic quality of the response. These matter less for correctness but appear in quality dashboards.
+
+Similarity or equivalence measures how close the response is to a known good reference answer. This requires ground truth, which is the cost of using it.
+
+Safety evaluators assess whether outputs contain harmful content across the content safety categories, and there are adversarial variants that deliberately probe for jailbreak susceptibility.
+
+The critical exam skill here is mapping a symptom to an evaluator. Let me drill it.
+
+The model invents policy details that do not exist in the handbook. That is groundedness.
+
+The model gives a technically true answer about a related topic instead of the question asked. That is relevance.
+
+The model says the information is not available when the document clearly contains it. That is retrieval, not generation. Fix the index, not the prompt.
+
+The model output occasionally includes content that violates company standards. That is a safety evaluator plus content filtering.
+
+We do not know whether the new model version is better or worse than the old one. That is an evaluation run over a fixed dataset comparing both, and this is exactly what should be in your deployment pipeline.
+
+Now, building agents. This is the newest and heaviest sub topic, so we will spend real time here.
+
+An agent, in the Foundry sense, is a configured combination of a model, instructions that define its role and goal, a set of tools it may invoke, a knowledge source it may ground on, and a mechanism for tracking conversation state.
+
+Let us take each element.
+
+Instructions. These define role, goal, tone, constraints, and escalation behaviour. Good agent instructions state what the agent is for, what it must not do, when it should ask for clarification, and when it should hand off to a human. Vague instructions produce agents that wander. A common exam scenario is an agent giving answers outside its intended scope, and the fix is tighter instructions plus scoped tools, not a bigger model.
+
+Tools and tool schemas. A tool schema describes the function name, a natural language description of what it does and when to use it, and typed parameters with descriptions. The model chooses tools based almost entirely on these descriptions. This is worth stressing. When a model calls the wrong tool, or fails to call a tool it should have called, the first thing to inspect is the schema descriptions, not the model.
+
+The failure signatures are learnable. If two tools have overlapping descriptions, the model will pick inconsistently between them. If a parameter description is vague, the model will fill it with plausible nonsense. If a tool description does not say when to use the tool, only what it does, the model will under call it.
+
+Function calling mechanics. The pattern is a loop. You send the conversation and the tool definitions to the model. The model responds either with a final answer or with one or more tool call requests, each naming a tool and supplying arguments. Your code executes the tool, and returns the result to the model as a tool result message associated with the original call. The model then continues, possibly calling more tools, until it produces a final answer.
+
+Two implementation points the exam cares about. First, tool results must be returned with the identifier that links them to the specific call, otherwise the model cannot associate them. Second, your loop needs a termination condition. Maximum iterations, or a timeout, or both. An agent loop without a bound can spin indefinitely, and questions about runaway cost or an agent that never returns are pointing at a missing iteration limit.
+
+Tool choice control. You can influence whether the model must call a tool, may call a tool, must not call a tool, or must call one specific tool. Use forced tool calls when the workflow requires a deterministic step. Use no tool calls when you want pure generation. Use automatic in the general case. If a scenario says the agent must always validate against the inventory system before responding, forcing that specific tool call is more reliable than hoping the instructions persuade the model.
+
+Conversation memory and state. Short term state is the thread of messages in the current conversation. Because context windows are finite and tokens cost money, long conversations require a strategy.
+
+The strategies, and when each applies. Truncation, where you drop the oldest messages, is simple and cheap but loses early context, which is bad if the user stated a constraint at the beginning. Summarisation, where you replace older turns with a compact summary, preserves gist at the cost of detail and an extra model call. Selective retrieval, where you store turns and retrieve only relevant ones, scales best for very long histories but adds infrastructure. Structured state extraction, where you pull the durable facts out into fields and carry those forward, is the most token efficient and the most reliable for task oriented agents.
+
+The exam heuristic. Short conversations, keep everything. Long open ended conversations, summarise. Very long histories where old detail might matter, retrieve selectively. Task oriented flows where a fixed set of facts matters, extract structured state.
+
+Multi agent orchestration. The objectives require implementing orchestrated multi agent solutions, so you need the patterns.
+
+Pattern one, sequential. Agents run in a fixed order, each consuming the previous output. Use when the workflow is genuinely a pipeline. Research, then draft, then review. Simple, predictable, easy to debug.
+
+Pattern two, concurrent or parallel. Multiple agents work simultaneously on the same input and results are aggregated. Use for independent perspectives, for speed, for ensemble style analysis. Requires an aggregation strategy and costs more.
+
+Pattern three, orchestrator and workers, sometimes called supervisor or manager. A coordinating agent decomposes a task, dispatches to specialist agents, and assembles results. Use when the decomposition itself requires judgement. This is the most flexible and the most common answer for complex workflows.
+
+Pattern four, handoff. Control transfers from one agent to another, and the receiving agent takes over the conversation. Use for triage and routing, where a front line agent identifies the domain and passes to a specialist.
+
+Pattern five, group discussion or debate. Multiple agents exchange messages and converge. Use for tasks where critique improves quality. Expensive, needs a termination condition.
+
+Now the more important question, which the exam asks in disguised form. When should you use multiple agents at all.
+
+Use multiple agents when the sub tasks require genuinely different tool sets, genuinely different knowledge, or genuinely different permission scopes. Separation of concerns and least privilege are the real justifications.
+
+Do not use multiple agents just because a task has several steps. A single agent with several tools handles a multistep task perfectly well and is cheaper, faster, easier to debug, and less prone to context loss at handoff boundaries. If a scenario describes a linear multistep task with one tool set and asks for the simplest effective design, one agent with tools is the answer.
+
+Say that back. Multiple agents for different tools, different knowledge, or different permissions. Not merely for multiple steps.
+
+Context isolation. When you do split into multiple agents, each agent has its own context. That is a feature, because it prevents one agent's noise from polluting another's reasoning, and it is a risk, because information the second agent needs must be passed explicitly at handoff. Lost context at agent boundaries is a classic failure mode and the fix is an explicit structured handoff payload rather than hoping the conversation carries it.
+
+Autonomous and semi autonomous workflows with safeguards. We touched on this in domain one and it recurs here because it is implementation as well as governance.
+
+The safeguard toolkit. Approval gates before consequential actions. Allow lists that restrict which tools, endpoints, or resources an agent may touch. Iteration and time limits. Spend limits. Dry run or preview modes where the agent describes what it would do without doing it. Rollback paths for reversible actions. And escalation rules that route to a human on low confidence or on repeated failure.
+
+For any scenario about an agent operating on production systems, the correct answer will almost always be the option with more constraint, not less. Microsoft's exam philosophy on autonomy is conservative.
+
+Agent monitoring and error analysis. The objectives ask you to integrate monitoring into deployed agents, evaluate agent behaviour, and perform error analysis.
+
+Tracing is the core instrument. A trace records the full execution of a request. Which model was called, with what prompt, what it returned, which tools were invoked with what arguments, what those tools returned, how long each step took, and how many tokens were consumed at each step.
+
+Error analysis on agents means classifying failures by where they occurred, and the categories are worth memorising because they map directly to fixes.
+
+Category one, the agent chose the wrong tool. Fix the tool descriptions or narrow the tool set.
+
+Category two, the agent chose the right tool with wrong arguments. Fix the parameter schema and descriptions, add validation.
+
+Category three, the tool failed or returned an error. Fix the integration, add retry and error handling, make sure the error is surfaced to the model in a form it can act on.
+
+Category four, the agent had the right information and reasoned poorly. This is a model or prompt problem. Consider a stronger model, better instructions, or decomposition.
+
+Category five, the agent never retrieved the right information. This is a knowledge and retrieval problem, not an agent problem.
+
+Category six, the agent looped without converging. This is a termination condition problem.
+
+Six categories. Wrong tool. Wrong arguments. Tool failure. Bad reasoning. Bad retrieval. No termination. When a scenario describes an agent misbehaving, classify first, then pick the fix that matches the category.
+
+Now the third skill group. Optimise and operationalise generative systems.
+
+Model parameters. You should know what the main generation parameters do and when to change them.
+
+Temperature controls randomness in token selection. Low temperature, near zero, gives deterministic, focused, repeatable output. Use it for extraction, classification, structured output, anything where you want the same answer every time. High temperature gives varied, creative output. Use it for brainstorming and content variation.
+
+Top P, or nucleus sampling, restricts selection to the smallest set of tokens whose cumulative probability exceeds the threshold. It is an alternative way to control randomness. The standard guidance is to adjust one or the other, not both, because they interact confusingly.
+
+Maximum tokens caps the length of the response. Note it caps output length, not input. A truncated response mid sentence is a maximum tokens problem.
+
+Stop sequences terminate generation when a specified string appears. Useful for structured formats.
+
+Frequency and presence penalties reduce repetition. Frequency penalty scales with how often a token has appeared. Presence penalty applies once a token has appeared at all.
+
+The exam pattern. If a scenario says output must be consistent and reproducible, temperature at or near zero. If a scenario says output is repetitive, penalties. If a scenario says responses are cut off, maximum tokens. If a scenario says the model is too rigid and the use case is creative, raise temperature.
+
+Prompt engineering, which the objectives call tuning generation behaviour.
+
+The techniques that matter, in rough order of leverage. Clear role and task definition in a system message. Explicit output format specification, including a schema when you need structured output. Few shot examples, which are the single most effective technique for teaching a format or an edge case handling rule. Explicit constraints and negative instructions, telling the model what not to do. Chain of thought prompting, asking the model to reason step by step before answering, which improves accuracy on multistep problems at the cost of tokens and latency. And delimiters that clearly separate instructions from data, which also reduces prompt injection risk.
+
+Structured outputs. When you need reliably parseable output, do not simply ask for JSON in the prompt and hope. Use the platform capability that constrains generation to a schema. The difference is that prompt based requests produce mostly valid output and schema constrained generation produces valid output. If a scenario describes a downstream system failing intermittently on parse errors, the answer is schema enforced structured output, not a better prompt.
+
+Model reflection, chain of thought evaluation, and self critique loops. These are in the objectives explicitly.
+
+The pattern is that the model produces an answer, then a second pass evaluates that answer against criteria, and either accepts it or requests a revision. This measurably improves quality on tasks with checkable criteria, and it costs at least double the tokens and latency. The exam framing is a trade off question. If quality matters more than latency and cost, add a critique pass. If the scenario emphasises latency or cost, do not.
+
+Observability. Tracing, token analytics, safety signals, latency breakdowns. The core insight is that a generative system has more failure surfaces than a traditional application, and you cannot debug what you cannot see. Instrument at the step level, not just the request level, so that when latency spikes you can tell whether it was retrieval, generation, or a slow tool.
+
+Token analytics matter for cost attribution. Break tokens down by prompt versus completion, by feature, by user or tenant, and by step. A common scenario is a cost overrun and the question is what to instrument. The answer is per step token accounting, because that is what tells you whether the problem is bloated context, verbose output, or an agent loop.
+
+Orchestrating multiple models and hybrid systems. The objectives mention orchestrating multiple models, flows, or hybrid large language model and rules engine combinations.
+
+The design principle is to use deterministic logic where determinism is available and appropriate, and to use models only where judgement is required. A rules engine should handle a policy check with a definite answer. A model should handle interpretation of ambiguous natural language. Hybrid designs are frequently the correct answer when a scenario mentions regulatory requirements, auditability, or the need for consistent decisions, because a rules engine is explainable and reproducible in a way a model is not.
+
+Model routing is the related pattern. Send simple requests to a small cheap model and escalate complex ones to a large model, using a classifier or heuristic to route. This is a very common answer to cost optimisation scenarios where quality cannot be sacrificed on hard cases.
+
+That completes domain two. Here is the compressed version.
+
+Retrieval augmented generation is eight stages. Ingest, extract, chunk, embed, index, retrieve, augment, generate. Chunking problems are the most common quality problem, and changing embedding models requires a full re index. Evaluators map to symptoms. Groundedness for fabrication, relevance for off target answers, retrieval metrics for missing information. Agents are instructions plus tools plus knowledge plus memory. Tool descriptions drive tool selection, so fix descriptions before blaming the model. Agent loops need termination conditions. Use multiple agents for different tools, knowledge, or permissions, not merely for multiple steps. Error analysis has six categories. Wrong tool, wrong arguments, tool failure, bad reasoning, bad retrieval, no termination. Temperature at zero for deterministic output. Schema constrained generation for reliable structure. Self critique buys quality and costs latency. Route simple work to small models.
+
+Section five. Domain three. Implement computer vision solutions. Ten to fifteen percent.
+
+Remember what we said about the shift. This is not the old computer vision domain. It has three skill groups. Image and video generation. Multimodal understanding. And responsible AI for multimodal content.
+
+Image and video generation first.
+
+You need to implement solutions that generate images from text prompts and reference media, generate video from text prompts and reference media, configure image editing workflows including inpainting and mask based edits and prompt driven modification, implement workflows to edit generated videos, and select appropriate generation and editing controls provided by the platform.
+
+The vocabulary you need to be fluent in.
+
+Text to image is straightforward generation from a prompt.
+
+Image to image, or generation from reference media, conditions the output on an existing image. Use when the scenario says maintain the composition, or match this style, or produce variations of this asset.
+
+Inpainting fills or replaces a specified region of an image while leaving the rest untouched. The specified region is defined by a mask. Use when the scenario says remove this object, or replace the background behind the subject, or change only the product colour while keeping everything else identical.
+
+Outpainting extends an image beyond its original boundaries. Use when the scenario says adapt this asset to a wider aspect ratio.
+
+Masking is the mechanism that makes inpainting possible. The mask marks which pixels may be regenerated.
+
+The exam pattern here is recognising when a scenario needs targeted editing versus full regeneration. If the requirement is preserve most of the image and change one region, that is inpainting with a mask, and regenerating the whole image from a prompt would be wrong because it will not preserve the untouched areas.
+
+For video, the same logic extends. Text to video generates from a prompt. Video generation conditioned on reference media follows the style or content of provided input. Editing workflows apply changes to generated clips. Understand that video generation is substantially more expensive and slower than image generation, and that generation jobs are typically asynchronous. If a scenario asks how an application should handle a video generation request, the answer involves submitting a job and polling or receiving a callback, not a synchronous blocking call.
+
+Now multimodal understanding, which is the larger part of this domain.
+
+You need to build solutions that analyse visual context using multimodal models, produce concise or detailed captions for single or multiple images, enable question answering grounded in visual evidence, generate alt text and extended descriptions aligned to accessibility guidelines, extract visual characteristics using Content Understanding in Foundry Tools, implement video analysis workflows, configure single task and pro mode Content Understanding pipelines, and identify objects, components, or regions within images or video.
+
+The single most important decision in this domain is when to use a general multimodal model versus when to use Content Understanding.
+
+Use a multimodal model when the task requires open ended reasoning about visual content. Answering an arbitrary question about an image. Describing a scene in natural language. Explaining what is happening. Comparing two images conceptually. The strength is flexibility. The weakness is that output is unstructured and variable.
+
+Use Content Understanding when you need consistent structured extraction across many files. You define an analyser with a schema describing the fields you want, and it returns those fields consistently for every input. The strength is repeatability and structure. The weakness is that it does what the schema says and no more.
+
+The heuristic. Open ended reasoning, multimodal model. Structured repeatable extraction at scale, Content Understanding with an analyser schema.
+
+Content Understanding is worth a little more depth because it appears in two domains. It is a multimodal analysis capability that handles documents, images, audio, and video through a common model. You define an analyser that specifies what to extract, and you get structured output back. The objectives mention single task and pro mode pipelines. The distinction to hold is that a standard single task analysis handles a straightforward extraction against a schema, while the more capable mode supports more complex reasoning, cross referencing across content, and multistep analysis, at higher cost. Choose the simpler mode unless the scenario requires reasoning across multiple inputs or complex conditional logic.
+
+Captioning. You should distinguish a caption, which is a single concise description of an image, from dense captioning, which produces multiple descriptions for distinct regions within the image, from an extended description, which is a longer narrative account.
+
+Accessibility is called out explicitly in the objectives, so know the distinction between alt text and an extended description. Alt text is short, functional, and conveys the purpose the image serves in context. It should not begin with the phrase image of, because assistive technology already announces that it is an image. An extended description is for complex visuals such as charts and diagrams where a short caption cannot carry the information, and it is typically provided in addition to alt text, not instead of it.
+
+That is a very likely exam question. Short functional alt text for simple images. Alt text plus an extended description for complex informational graphics. Purely decorative images should have empty alt text so screen readers skip them.
+
+Visual question answering means grounding an answer in visual evidence. The design consideration is that the model should answer from what is visible and should decline when the image does not contain the answer. Prompts for visual question answering should instruct the model explicitly to say when the image does not show the requested information, otherwise it will guess.
+
+Video analysis workflows. Video is processed in segments. The general pattern is to sample or segment the video, analyse the segments, and aggregate. Understand that transcription of the audio track is often as valuable as visual analysis, and that many video understanding scenarios are best solved by combining transcript analysis with visual analysis rather than by visual analysis alone.
+
+Object and region identification. The objectives ask for solutions that identify objects, components, or regions within images or video. Modern approaches use multimodal models with grounding capability that can return regions along with descriptions, rather than requiring a separately trained detector. If a scenario emphasises that the team lacks machine learning expertise or that there is no labelled training data, the answer is a general purpose or content understanding approach, not training a custom detector.
+
+Now, responsible AI for multimodal content. Three bullets, all testable.
+
+First, implement filters to classify unsafe or disallowed visual content. Content safety applies to images as well as text, across the same category framework, and it applies both to images submitted as input and to images generated as output. Generation requests should be filtered on the prompt and the produced image should be filtered on the output.
+
+Second, detect and mitigate indirect prompt injection using embedded text in images. This is the multimodal variant of a threat you already understand. An attacker places instruction text inside an image. A multimodal model reads that text and may treat it as an instruction. The mitigations are prompt shields configured for indirect injection, clear separation in the prompt between instructions and content to be analysed, and instructing the model explicitly to treat any text found within provided media as data to report rather than as commands to follow. Expect this on the exam. It is specifically named in the objectives.
+
+Third, enforce visual policy rules. Watermarking generated content so it is identifiable as synthetic. Flagging prohibited symbols. Upholding brand usage requirements. Detecting potentially inappropriate content. The theme is that generated visual content in an enterprise context needs provenance and policy enforcement, not just safety filtering.
+
+That is domain three. Compressed. Inpainting with a mask for targeted edits, full generation only when the whole image can change. Video generation is asynchronous and expensive. Multimodal models for open ended reasoning, Content Understanding analysers for structured repeatable extraction. Alt text is short and functional, extended descriptions are for complex informational graphics, decorative images get empty alt text. Indirect prompt injection can arrive as text embedded in an image. Generated content needs watermarking and policy enforcement.
+
+Section six. Domain four. Implement text analysis solutions. Ten to fifteen percent.
+
+Two skill groups. Language model text analysis, and speech.
+
+Text analysis first.
+
+The objectives ask you to extract entities, topics, summaries, and structured JSON outputs using generative prompting and Foundry Tools. To configure detection of sentiment, tone, safety issues, and sensitive content. To translate text using Azure Translator in Foundry Tools or language model powered translation flows. And to customise outputs for domain tasks such as compliance summarisation and domain extraction.
+
+Notice the phrasing throughout. Generative prompting and Foundry Tools. The exam wants you to hold both options and choose between them, and that choice is the heart of this domain.
+
+Here is the decision framework, and it generalises well beyond this domain.
+
+Choose the purpose built Foundry Tool when the task is a well defined, high volume, standard operation. Language detection. Sentiment classification. Named entity recognition over common entity types. Detection of personally identifiable information. Translation between supported language pairs. Key phrase extraction. These tools are cheaper per unit, faster, more predictable, do not fabricate, and require no prompt engineering.
+
+Choose the language model when the task requires domain specific judgement, a custom output schema, nuance the prebuilt tool does not capture, or a combination of operations in a single pass. Summarising a contract against a specific compliance framework. Extracting entities that are unique to your industry. Interpreting tone in a way that requires context. Producing a structured record that combines extraction, classification, and summarisation together.
+
+The heuristic in one line. Standard operation at volume, use the tool. Domain specific judgement or custom schema, use the model.
+
+There is a middle path that also appears. You can often use both. Run the cheap tool to filter or pre process at volume, then apply the model only to the cases that need judgement. When a scenario emphasises both accuracy and cost at high volume, a two stage design is frequently the intended answer.
+
+Sensitive content and personally identifiable information detection deserves a note. The capability detects and can redact categories of sensitive data in text. This appears in compliance scenarios and in the pattern where you redact before sending content to a model, which is a legitimate privacy control worth recognising.
+
+Translation. Azure Translator is the purpose built tool. It supports a large number of languages, handles document translation preserving formatting, and supports custom translation models trained on your terminology. A language model can also translate, and it handles context and idiom well, but it is more expensive and less predictable at volume.
+
+The decision rule. Bulk translation, many languages, formatting preservation, or a need for consistent terminology, use Translator, with a custom model if the organisation has specialised vocabulary. Translation that requires understanding context, tone adaptation, or combined translation and rewriting, use a language model.
+
+Now speech, which is now framed around agentic interaction rather than as a standalone service.
+
+The objectives ask for workflows that convert speech to text and text to speech for agentic interactions, integrating speech as an agent modality including custom speech models, enabling multimodal reasoning from audio inputs, and translating speech into other languages.
+
+Speech to text, also called transcription or recognition, converts audio into text. Know the main modes conceptually. Real time recognition streams audio and returns results as the speaker talks, which is what you need for a live conversational agent. Batch transcription processes stored audio files asynchronously, which is what you need for call recordings and archives. The tell is the same as everywhere else. Interactive means real time, archives mean batch.
+
+Custom speech is the capability to adapt the recognition model to your domain. Use it when the scenario mentions specialised vocabulary, product names, industry jargon, acronyms, or accented speech that the base model transcribes poorly. Custom speech is trained on audio and matching transcripts, or on text data containing the domain vocabulary. If a scenario says the system consistently gets our product names wrong, custom speech is the answer.
+
+Text to speech, also called synthesis, converts text into audio. You should know that voices can be adjusted for style, pace, pitch, and pronunciation through a speech markup language, and that a custom neural voice can be created to produce a distinctive brand voice. Custom neural voice is a limited access capability with responsible AI requirements including consent from the voice talent, which is itself an examinable point about responsible AI.
+
+Speech translation converts speech in one language into text or speech in another, in a single pipeline rather than transcribe then translate as separate steps.
+
+For agentic voice interactions, the architectural pattern to hold is the loop. Audio in, recognised to text, text sent to the agent, agent reasons and possibly calls tools, agent produces a text response, response synthesised to audio, audio out. The latency budget is the sum of all those steps, which is why voice agents are more sensitive to model latency than text agents, and why streaming at both ends matters. If a scenario complains about awkward pauses in a voice agent, look for streaming recognition, streaming generation, and a faster model, not for a better prompt.
+
+Multimodal reasoning from audio inputs is the newer capability where a model consumes audio directly rather than consuming a transcript. The advantage is that non lexical information survives. Tone, emotion, hesitation, background context. If a scenario requires understanding how something was said and not merely what was said, direct audio input to a multimodal model beats transcription followed by text analysis, because transcription discards exactly that information.
+
+That is domain four. Compressed. Purpose built tool for standard high volume operations, language model for domain judgement and custom schemas, two stage designs when both cost and accuracy matter. Translator for bulk and formatting, custom translation for specialised terminology. Real time recognition for live interaction, batch for archives. Custom speech for domain vocabulary and mis transcribed product names. Custom neural voice requires consent. Voice agent latency is the sum of every step, so stream at both ends. Direct audio to a multimodal model preserves tone that transcription destroys.
+
+Section seven. Domain five. Implement information extraction solutions. Ten to fifteen percent.
+
+Two skill groups. Retrieval and grounding pipelines, and extracting content from documents. This domain is where the plumbing lives, and it connects directly back to retrieval augmented generation in domain two.
+
+Retrieval and grounding pipelines first.
+
+You need to ingest and index content including documents, images, audio and video. Configure semantic, hybrid, and vector search for grounding. Implement enrichment using custom or built in skills for text, images and layout. Configure retrieval augmented generation ingestion flow including documents and optical character recognition. And connect retrieval pipelines directly to workflows and agent tools.
+
+The core architecture of a search based grounding pipeline has named components and you should know them.
+
+A data source points at where the content lives. Blob storage, a database, a file share.
+
+An indexer is the component that crawls the data source, extracts content, runs enrichment, and pushes documents into an index. Indexers can run on a schedule and can track changes so that only new or modified content is reprocessed, which is the answer to scenarios about keeping an index current without full rebuilds.
+
+A skillset is the enrichment pipeline attached to an indexer. Skills are individual enrichment steps. Built in skills cover common operations, optical character recognition on images, text splitting, language detection, entity recognition, image analysis, and generating embeddings. Custom skills let you call your own code or a model as a step in the pipeline.
+
+An index is the searchable structure. It has fields, and each field has attributes governing whether it is searchable, filterable, sortable, facetable, and retrievable. Vector fields hold embeddings and carry configuration for the algorithm and distance metric used.
+
+Integrated vectorisation is the capability where the pipeline generates embeddings for you during indexing and generates the query embedding at search time, rather than requiring you to call an embedding model yourself on both sides. When a scenario asks how to minimise custom code in a vector search implementation, this is the answer.
+
+A knowledge store persists the enriched output for downstream use beyond search.
+
+Now, the query side. Recall the retrieval choices from domain one and add the mechanics.
+
+Keyword search uses the traditional inverted index and term matching. Vector search compares query and document embeddings by similarity. Hybrid search executes both and merges the ranked lists using a fusion algorithm that combines the rankings rather than the raw scores, which is important because keyword scores and vector similarity scores are not on comparable scales.
+
+Semantic ranking then reranks the fused top results using a language understanding model, and can also return extractive captions and answers.
+
+Filters are separate from relevance and are worth calling out. A filter is a strict boolean restriction applied to the result set. Security trimming, where users only see documents they are permitted to see, is implemented as a filter on a field containing permitted identities, and this is a very common exam scenario. If a question says users must only retrieve documents their group has access to, the answer is a filter on a permissions field populated during indexing, applied at query time based on the caller's identity. It is not implemented in the prompt, and it is not implemented by asking the model to be careful.
+
+Let me repeat that because it is a high value point. Access control in retrieval is enforced by filtering at query time, not by instructing the model.
+
+Connecting retrieval to agents. A retrieval pipeline can be exposed to an agent as a knowledge source or as a tool. As a knowledge source, grounding happens as part of the agent's configured behaviour. As a tool, the agent decides when to search and with what query, which is more flexible and allows multiple targeted searches, and is generally better for complex questions that require more than one lookup. If a scenario describes questions that require combining information from several searches, giving the agent search as a tool it can call repeatedly beats a single automatic retrieval.
+
+Now the second skill group. Extract content from documents.
+
+You need to extract information using multimodal pipelines that combine optical character recognition, layout analysis, and field extraction. Produce clean grounded representations for agents and retrieval augmented generation using Content Understanding. And implement analysers that generate structured or markdown outputs for downstream reasoning.
+
+Understand the layers of document processing.
+
+Optical character recognition converts pixels to characters. That is all. It gives you text and positions.
+
+Layout analysis identifies structure. Paragraphs, headings, tables, key value pairs, reading order, selection marks such as checkboxes. This matters enormously for retrieval quality, because a table flattened into a stream of characters is worse than useless, while a table preserved as a table can be chunked and cited correctly.
+
+Field extraction pulls specific named values into a schema. Invoice number, total, date, party names.
+
+Content Understanding sits above these and produces structured output against an analyser schema, across documents, images, audio and video.
+
+The markdown output point is worth dwelling on, because it is a real design insight and it is explicitly in the objectives. Producing markdown from a document preserves structure, headings, lists, and tables in a form that language models handle very well, and that chunks cleanly along structural boundaries. When a scenario asks how to prepare complex documents with tables and hierarchical sections for retrieval augmented generation, converting to structured markdown is a strong answer, and it is much better than extracting a flat text stream.
+
+Prebuilt versus custom extraction. Prebuilt models exist for common document types. Invoices, receipts, identity documents, business cards, tax forms, contracts, health insurance cards. If a scenario names one of these standard document types, the prebuilt model is the answer and building a custom model is wrong because it is unnecessary effort.
+
+Custom extraction is for organisation specific forms that no prebuilt model covers. It requires labelled training examples. If a scenario mentions a proprietary form unique to the business, custom is correct.
+
+The decision rule. Standard document type, prebuilt. Organisation specific form, custom. Open ended or varied documents where you want a defined schema, Content Understanding with an analyser. Unstructured reasoning over document content, a multimodal model.
+
+Handling scanned and mixed content. If a corpus contains scanned pages, photographs of documents, and native digital files, the pipeline must apply optical character recognition selectively, and the enrichment skillset is where that happens. A scenario describing a mixed corpus where some documents return no text is describing missing optical character recognition on the scanned subset.
+
+That is domain five. Compressed. Data source, indexer, skillset, index. Indexers support change tracking for incremental updates. Integrated vectorisation removes the need to call embedding models yourself. Hybrid search fuses rankings, semantic ranking reorders the top. Access control is a query time filter, never a prompt instruction. Give agents search as a callable tool when questions need multiple lookups. Layout analysis preserves tables and structure, markdown output chunks cleanly. Prebuilt for standard document types, custom for proprietary forms.
+
+Section eight. Mental models for ambiguous questions.
+
+You will meet questions where two answers both look defensible. This section gives you tie breakers. Learn these and you convert coin flips into decisions.
+
+Tie breaker one. The most specific constraint wins.
+
+When a scenario contains several requirements, one of them is usually doing the discriminating work while the others are context. Find the requirement that eliminates options. If three options satisfy the general goal and only one satisfies the phrase without storing credentials in the application, that phrase is the question.
+
+Tie breaker two. Managed beats custom, unless the scenario says otherwise.
+
+Microsoft exams consistently favour the option with less operational burden. Prebuilt over trained. Built in skill over custom skill. Integrated capability over hand rolled code. The exception is when the scenario explicitly establishes that the built in option cannot meet the requirement, usually through a phrase about proprietary formats, specialised vocabulary, or unique business logic. Absent that signal, choose managed.
+
+Tie breaker three. Least privilege wins.
+
+Between two security options, the one that grants less access is correct. Between two autonomy designs, the one with more human oversight on consequential actions is correct. Microsoft's exam philosophy is conservative and you should be too.
+
+Tie breaker four. Fix the layer where the problem is.
+
+Diagnose before you prescribe. Retrieval problems get retrieval fixes. Generation problems get prompt and model fixes. Tool selection problems get schema fixes. A surprising number of wrong answers are correct fixes applied to the wrong layer. If the model never saw the right information, no prompt improvement will help.
+
+Tie breaker five. If the scenario mentions volume and the workload is not interactive, think batch and think smaller models.
+
+Cost optimisation questions almost always have an answer that involves either processing offline at a discount, routing simple work to a cheaper model, or reducing tokens per call. Look for those before you look for architectural rewrites.
+
+Tie breaker six. Determinism where determinism is possible.
+
+If a decision has a definite correct answer that can be expressed as a rule, a rule is better than a model. Compliance checks, threshold decisions, eligibility logic. Use the model for the ambiguous part and rules for the definite part.
+
+Tie breaker seven. Read the verbs in the requirement.
+
+Must, should, and may are not interchangeable in Microsoft scenarios. Must is a hard constraint that eliminates options. Should is a preference used to choose among options that satisfy the musts. Also watch for minimise, which signals an optimisation target, and for only, which signals exclusivity and usually eliminates options that do more than asked.
+
+Tie breaker eight. When genuinely stuck, ask which option a cautious senior engineer would defend in a design review.
+
+Not the cleverest option. The one that is explainable, observable, secure, and appropriately constrained. That instinct maps well onto how these exams are written.
+
+Section nine. Rapid fire quiz.
+
+Now we test recall. I will ask a question, then pause. You should answer out loud or in your head before I give the answer. If you are driving or walking, just say it. The act of retrieving is what builds the memory, and getting it wrong is more useful than not trying.
+
+There are twenty two questions. Here we go.
+
+Question one. Which domain carries the highest weight on AI 103, and what is that weight.
+
+Think about it. Pause here if you need to.
+
+The answer. Implement generative AI and agentic solutions, at thirty to thirty five percent.
+
+Question two. A scenario says the application must not store any credentials. What is the answer.
+
+Think about it.
+
+The answer. Managed identity, with a role assignment on the target resource.
+
+Question three. Name the eight stages of a retrieval augmented generation pipeline in order.
+
+Take your time on this one.
+
+The answer. Ingest, extract, chunk, embed, index, retrieve, augment, generate.
+
+Question four. Retrieval returns documents that are only loosely related to the question, and answers are vague. Chunks too big or chunks too small.
+
+Think about it.
+
+The answer. Too big. Large chunks dilute relevance and cover multiple topics.
+
+Question five. You switch to a different embedding model. What must you do to your index.
+
+The answer. Re embed and re index the entire corpus. Old vectors are not comparable to new query vectors.
+
+Question six. An agent consistently calls the wrong tool. What do you inspect first.
+
+The answer. The tool schema descriptions. Tool selection is driven by names, descriptions, and parameter descriptions, not by the model's intelligence.
+
+Question seven. Name the six categories of agent error analysis.
+
+Pause and try to list them.
+
+The answer. Wrong tool. Wrong arguments. Tool failure. Bad reasoning. Bad retrieval. No termination.
+
+Question eight. When should you use multiple agents rather than one agent with several tools.
+
+Think.
+
+The answer. When sub tasks require genuinely different tool sets, different knowledge, or different permission scopes. Not merely because a task has multiple steps.
+
+Question nine. Users must only retrieve documents their group is permitted to see. Where is that enforced.
+
+The answer. A filter applied at query time against a permissions field populated during indexing. Not in the prompt.
+
+Question ten. A workload processes a large archive overnight and is not time sensitive. Which deployment approach.
+
+The answer. Batch. It trades latency for a significant cost reduction.
+
+Question eleven. Which evaluator detects that a model invented a policy detail not present in the source documents.
+
+The answer. Groundedness.
+
+Question twelve. Which evaluator detects that an answer is factually supported but does not address the question asked.
+
+The answer. Relevance.
+
+Question thirteen. An application receives intermittent 429 responses during traffic bursts, but average load is within capacity. What is the correct fix.
+
+The answer. Retry with exponential backoff, honouring the retry after header.
+
+Question fourteen. A scenario requires that traffic never traverses the public internet. What two things must you configure.
+
+Think about both parts.
+
+The answer. A private endpoint, and disable public network access on the resource. One without the other is incomplete.
+
+Question fifteen. You need to remove an object from a photograph while leaving the rest of the image unchanged. Which technique.
+
+The answer. Inpainting, using a mask that marks the region to regenerate.
+
+Question sixteen. When do you choose Content Understanding with an analyser over a general multimodal model.
+
+The answer. When you need consistent structured extraction against a defined schema across many files. The multimodal model is for open ended reasoning.
+
+Question seventeen. A complex chart is embedded in a web page. What accessibility output is required.
+
+The answer. Short functional alt text, plus an extended description, because a short caption cannot carry the information in a complex informational graphic.
+
+Question eighteen. What is indirect prompt injection in a multimodal context, and what defends against it.
+
+Take a moment.
+
+The answer. Instruction text embedded inside an image that the model reads and may obey. Defences are prompt shields configured for indirect injection, clear separation of instructions from content, and explicitly instructing the model to treat text found in media as data rather than commands.
+
+Question nineteen. A transcription system consistently mishandles your company's product names. What do you implement.
+
+The answer. Custom speech, trained on domain vocabulary or on audio with matching transcripts.
+
+Question twenty. A scenario requires understanding not just what a caller said but how they said it. Transcribe then analyse, or direct audio to a multimodal model.
+
+The answer. Direct audio to a multimodal model. Transcription discards tone, hesitation, and emotion.
+
+Question twenty one. A downstream system intermittently fails to parse the model's JSON output. What is the correct fix.
+
+The answer. Schema constrained structured output, not a more insistent prompt.
+
+Question twenty two. A team changes a prompt and quality silently degrades in production. What should have been in place.
+
+The answer. An automated evaluation step in the deployment pipeline, with a quality threshold that blocks promotion. Prompts are code.
+
+That is the quiz. If you missed more than five, that tells you where to focus. Note which ones you missed and go do the hands on work on those topics specifically.
+
+Section ten. Exam day strategy.
+
+A short section, but these are cheap points.
+
+Before the day. Book the exam. An unbooked exam is a hobby. If you are not testing in your first language, request the additional thirty minutes when you register. Visit the exam sandbox at least once so the interface is not new to you. Check your identification requirements and, if testing online, your room and system requirements the day before, not an hour before.
+
+Time management. Roughly one hundred twenty minutes for roughly forty to sixty questions gives you about two minutes per question. Case studies consume more, so aim to be faster than two minutes on standard questions to bank time.
+
+The case study rule. Once you leave a case study section you generally cannot return. Complete it fully before moving on. Read the requirements section of the case study carefully first, because the requirements are where the discriminating constraints live, and they are often more useful than the background narrative.
+
+The review flag. Use it liberally. If a question takes more than ninety seconds and you are not converging, mark it, choose your best current answer, and move on. Never leave a question blank. There is no penalty for a wrong answer, so an unanswered question is strictly worse than a guess.
+
+Elimination. On multiple choice, eliminate first. Most questions have one clearly wrong option, one that solves a different problem, and two plausible ones. Getting to two and applying a tie breaker is a strong position.
+
+Multiple select. When a question tells you to choose two or three, it means exactly that. If you have four candidates, one of them fails a constraint. Find the constraint.
+
+The second pass. When you reach the end, revisit flagged questions with your remaining time. Fresh eyes catch misread constraints. But be disciplined about changing answers. Change an answer when you can articulate the specific reason your first choice violates a stated requirement. Do not change on vague unease.
+
+Watch for absolute language in options. Words like always, never, all, and only are frequently in distractors, because real engineering answers are usually conditional. Not a rule, but a useful prior.
+
+And finally, pace yourself physically. Two hours of dense reading is tiring. If the format allows a moment to close your eyes and breathe between sections, take it. Attention errors late in an exam cost more points than knowledge gaps.
+
+Section eleven. Closing recap.
+
+Let us finish by consolidating the things most likely to appear and most likely to be forgotten.
+
+Weightings. Plan and manage, twenty five to thirty percent. Generative and agentic, thirty to thirty five percent, the heaviest. Computer vision, ten to fifteen percent. Text analysis, ten to fifteen percent. Information extraction, ten to fifteen percent. Study time should follow those numbers, not your comfort level.
+
+Platform. Foundry is the centre. Projects organise deployments, agents, connections, and evaluations. Foundry Tools is the current framing for the purpose built capabilities.
+
+The recurring decision. Purpose built tool or general model. Standard high volume operation, use the tool. Domain judgement or custom schema, use the model. Both, in two stages, when cost and accuracy both matter.
+
+Security defaults. Managed identity for keyless authentication. Role based access control over keys. Private endpoint plus disabled public access for network isolation. Customer managed keys when the organisation must hold the key. Access control in retrieval is a query time filter.
+
+Agent design. Instructions, tools, knowledge, memory. Tool descriptions determine tool selection. Loops need termination conditions. High blast radius actions need approval gates. Scope tools to roles. Trace everything.
+
+Retrieval. Hybrid search plus semantic ranking is the sensible default. Chunking is the most common source of quality problems. Layout aware extraction and markdown output preserve structure that flat text destroys. Changing embedding models means re indexing everything.
+
+Evaluation. Groundedness for fabrication. Relevance for off target answers. Retrieval metrics for missing information. Safety evaluators for harmful output. Run evaluations as a gate in your deployment pipeline, on a fixed dataset, on a schedule, so you can detect drift.
+
+Responsible AI. Four content categories with configurable severity, on inputs and on outputs, independently. Prompt shields for direct jailbreaks and indirect injection, including injection embedded in images. Groundedness detection. Protected material detection. Watermarking and provenance for generated media. Consent requirements for custom neural voice.
+
+And the mindset, one last time. This exam tests whether you can satisfy every stated constraint, not whether you know the generally best practice. Read for constraints. Tag them. Eliminate options that violate any of them. Apply the tie breakers when two survive.
+
+You have done the hard part already by choosing to prepare properly rather than relying on recycled material for a retired exam. Do the hands on work, come back to this recording a few times as a review pass, and go and book it.
+
+Good luck.
+
+End of recording.
